@@ -336,14 +336,48 @@
                     Sapa Saya Sekarang
                 </a>
                 
-<!-- Audio Player Gen Z Style -->
-     <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(167,139,250,0.3); padding: 15px; border-radius: 12px; display: flex; align-items: center; justify-content: space-between; max-width: 320px; margin: 20px auto;">
-  <span style="font-size: 0.85rem; color: #e2e8f0;">🎧 Now Playing: God's Menu - Stray Kids</span>
-  <audio controls style="height: 30px; width: 140px;">
+<!-- Custom Neon Audio Player Gen Z -->
+<div style="margin: 25px auto; text-align: center;">
+  <audio id="myBgm" loop preload="auto">
     <source src="bgm.mp3" type="audio/mpeg">
   </audio>
-     </div>
-                
+  
+  <button id="musicBtn" onclick="toggleMusic()" style="background: rgba(167, 139, 250, 0.15); border: 1px solid #a78bfa; color: #e2e8f0; padding: 10px 20px; border-radius: 30px; font-size: 0.85rem; font-family: 'Poppins', sans-serif; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; backdrop-filter: blur(5px); box-shadow: 0 0 15px rgba(167, 139, 250, 0.2); transition: all 0.3s ease;">
+    <span id="musicIcon">🎵</span> <span id="musicText">Play Music: Stray Kids</span>
+  </button>
+</div>
+
+<script>
+  const audio = document.getElementById('myBgm');
+  const btn = document.getElementById('musicBtn');
+  const icon = document.getElementById('musicIcon');
+  const text = document.getElementById('musicText');
+
+  // Trik Autoplay: Muter otomatis saat pengunjung pertama kali ngetuk layar
+  document.addEventListener('click', function startAuto() {
+    audio.play().then(() => {
+      icon.innerText = '🔊';
+      text.innerText = 'Now Playing: Stray Kids';
+      btn.style.borderColor = '#38bdf8';
+      document.removeEventListener('click', startAuto);
+    }).catch(() => {});
+  }, { once: true });
+
+  function toggleMusic() {
+    if (audio.paused) {
+      audio.play();
+      icon.innerText = '🔊';
+      text.innerText = 'Now Playing: Stray Kids';
+      btn.style.borderColor = '#38bdf8';
+    } else {
+      audio.pause();
+      icon.innerText = '🎵';
+      text.innerText = 'Play Music: Stray Kids';
+      btn.style.borderColor = '#a78bfa';
+    }
+  }
+</script>
+
                 <!-- Sosial Media & Profil Game -->
                 <div class="mt-14 flex flex-col items-center gap-6">
                     <p class="text-gray-400 text-sm tracking-widest uppercase font-medium">Temukan saya di</p>
