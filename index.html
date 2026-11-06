@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M. Afgan Ikhbar A. | Portofolio DKV</title>
+    
+    <!-- Google Fonts: Space Grotesk & Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome untuk Ikon Sosial Media -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS (via CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Configuration & Custom CSS -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#0f172a', /* Sesuai permintaan */
+                        neonPurple: '#8b5cf6', /* Sesuai permintaan */
+                        darkCard: '#1e293b'
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Custom Styles & Neon Glowing Effects */
+        body {
+            background-color: #0f172a;
+            color: #e2e8f0; /* Teks terang kontras tinggi */
+        }
+
+        /* Teks gradient Gen-Z */
+        .text-gradient {
+            background: linear-gradient(to right, #8b5cf6, #d946ef);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Hover efek neon untuk kartu dan tombol */
+        .hover-neon:hover {
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+            border-color: #8b5cf6;
+            transform: translateY(-5px);
+        }
+        
+        .btn-neon {
+            transition: all 0.3s ease;
+        }
+        
+        .btn-neon:hover {
+            box-shadow: 0 0 15px #8b5cf6, 0 0 30px #8b5cf6;
+            background-color: #7c3aed;
+            color: white;
+        }
+
+        /* Scrollbar kustom estetis */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #8b5cf6;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #7c3aed;
+        }
+
+        /* Utility classes for layout spacing/indent */
+        .section-padding {
+            padding-top: 100px;
+            padding-bottom: 60px;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-neonPurple selection:text-white">
+
+    <!-- Navbar: Sticky & Backdrop Blur -->
+    <nav class="fixed w-full top-0 z-50 backdrop-blur-md bg-darkBg/80 border-b border-neonPurple/20 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="#beranda" class="font-display font-bold text-2xl tracking-tighter text-white">
+                        AFGAN<span class="text-neonPurple">.</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8 font-medium">
+                        <a href="#beranda" class="text-gray-300 hover:text-neonPurple transition-colors px-3 py-2 rounded-md">Beranda</a>
+                        <a href="#tentang" class="text-gray-300 hover:text-neonPurple transition-colors px-3 py-2 rounded-md">Tentang Saya</a>
+                        <a href="#keterampilan" class="text-gray-300 hover:text-neonPurple transition-colors px-3 py-2 rounded-md">Keterampilan</a>
+                        <a href="#pengalaman" class="text-gray-300 hover:text-neonPurple transition-colors px-3 py-2 rounded-md">Pengalaman</a>
+                        <a href="#hobi" class="text-gray-300 hover:text-neonPurple transition-colors px-3 py-2 rounded-md">Hobi</a>
+                        <a href="#kontak" class="border border-neonPurple text-neonPurple hover:bg-neonPurple hover:text-white px-5 py-2 rounded-full transition-all duration-300">Kontak</a>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-darkCard border-b border-neonPurple/20">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col font-medium">
+                <a href="#beranda" class="text-gray-300 hover:text-neonPurple block px-3 py-2 rounded-md">Beranda</a>
+                <a href="#tentang" class="text-gray-300 hover:text-neonPurple block px-3 py-2 rounded-md">Tentang Saya</a>
+                <a href="#keterampilan" class="text-gray-300 hover:text-neonPurple block px-3 py-2 rounded-md">Keterampilan</a>
+                <a href="#pengalaman" class="text-gray-300 hover:text-neonPurple block px-3 py-2 rounded-md">Pengalaman</a>
+                <a href="#hobi" class="text-gray-300 hover:text-neonPurple block px-3 py-2 rounded-md">Hobi</a>
+                <a href="#kontak" class="text-neonPurple block px-3 py-2 rounded-md">Kontak</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 1. BERANDA (Hero Section) -->
+    <section id="beranda" class="min-h-screen flex items-center justify-center pt-20 px-6 relative overflow-hidden">
+        <!-- Abstract Glow Background Elements -->
+        <div class="absolute top-1/4 left-1/4 w-72 h-72 bg-neonPurple rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-pulse"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-72 h-72 bg-fuchsia-600 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-pulse" style="animation-delay: 2s;"></div>
+
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <p class="text-neonPurple font-medium tracking-widest uppercase mb-4 text-sm md:text-base">Selamat Datang di Portofolio Saya</p>
+            <h1 class="font-display font-bold text-5xl md:text-7xl lg:text-8xl leading-tight mb-6">
+                Halo, Saya <br />
+                <span class="text-gradient">M. Afgan Ikhbar Amrullah</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+                Siswa DKV (Desain Komunikasi Visual) yang antusias merangkai visual kreatif dan sinematografi. Mengubah ide abstrak menjadi karya nyata.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#karya" class="btn-neon bg-neonPurple text-white px-8 py-3 rounded-full font-medium w-full sm:w-auto text-center">Lihat Karya</a>
+                <a href="#kontak" class="border border-gray-600 text-gray-300 hover:border-white hover:text-white px-8 py-3 rounded-full font-medium transition-colors w-full sm:w-auto text-center">Sapa Saya</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. TENTANG SAYA -->
+    <section id="tentang" class="section-padding bg-darkBg px-6">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="font-display font-bold text-3xl md:text-4xl text-white mb-8 flex items-center">
+                <span class="text-neonPurple mr-4">01.</span> Tentang Saya
+                <div class="h-px bg-gray-700 flex-grow ml-6"></div>
+            </h2>
+            
+            <div class="bg-darkCard border border-gray-800 rounded-2xl p-8 md:p-12 shadow-xl relative overflow-hidden group hover-neon transition-all duration-300">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-neonPurple/10 rounded-bl-[100px] z-0 transition-transform group-hover:scale-110"></div>
+                
+                <div class="relative z-10 text-gray-300 text-lg leading-relaxed space-y-6">
+                    <p>
+                        Saya adalah siswa kelas XII di <strong class="text-white">SMK Al-Amin Surabaya</strong>. Sebagai seorang yang menggeluti bidang Desain Komunikasi Visual (DKV), saya memiliki hasrat yang kuat terhadap eksplorasi komposisi visual.
+                    </p>
+                    <p>
+                        Saya sangat senang bereksperimen dengan <span class="text-neonPurple font-medium">rasio 16:9</span>—kanvas sinematik favorit saya—serta menciptakan tata letak komposisi kreatif yang menceritakan sebuah kisah di luar batasan teks.
+                    </p>
+                    <p>
+                        Dari merancang identitas merek hingga mengedit video dinamis, tujuan utama saya adalah selalu memberikan dampak visual yang kuat dan relevan dengan tren masa kini.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. KETERAMPILAN -->
+    <section id="keterampilan" class="section-padding px-6">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="font-display font-bold text-3xl md:text-4xl text-white mb-12 flex items-center justify-end text-right">
+                <div class="h-px bg-gray-700 flex-grow mr-6"></div>
+                Keterampilan <span class="text-neonPurple ml-4">.02</span>
+            </h2>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Skill 1 -->
+                <div class="bg-darkCard border border-gray-800 rounded-xl p-6 flex flex-col items-center justify-center text-center hover-neon transition-all duration-300 group">
+                    <div class="w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center mb-4 group-hover:bg-neonPurple/20 transition-colors">
+                        <svg class="w-8 h-8 text-neonPurple" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+                    </div>
+                    <h3 class="font-display font-semibold text-white">CorelDRAW</h3>
+                    <p class="text-sm text-gray-400 mt-2">Desain Vektor</p>
+                </div>
+
+                <!-- Skill 2 -->
+                <div class="bg-darkCard border border-gray-800 rounded-xl p-6 flex flex-col items-center justify-center text-center hover-neon transition-all duration-300 group">
+                    <div class="w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center mb-4 group-hover:bg-neonPurple/20 transition-colors">
+                        <svg class="w-8 h-8 text-neonPurple" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h3 class="font-display font-semibold text-white">Canva</h3>
+                    <p class="text-sm text-gray-400 mt-2">Layout & Grafis Cepat</p>
+                </div>
+
+                <!-- Skill 3 -->
+                <div class="bg-darkCard border border-gray-800 rounded-xl p-6 flex flex-col items-center justify-center text-center hover-neon transition-all duration-300 group">
+                    <div class="w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center mb-4 group-hover:bg-neonPurple/20 transition-colors">
+                        <svg class="w-8 h-8 text-neonPurple" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="font-display font-semibold text-white">CapCut</h3>
+                    <p class="text-sm text-gray-400 mt-2">Video Editing</p>
+                </div>
+
+                <!-- Skill 4 -->
+                <div class="bg-darkCard border border-gray-800 rounded-xl p-6 flex flex-col items-center justify-center text-center hover-neon transition-all duration-300 group">
+                    <div class="w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center mb-4 group-hover:bg-neonPurple/20 transition-colors">
+                        <svg class="w-8 h-8 text-neonPurple" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+                    </div>
+                    <h3 class="font-display font-semibold text-white">FlexiPRINT</h3>
+                    <p class="text-sm text-gray-400 mt-2">Digital Printing</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. PENGALAMAN & KARYA -->
+    <section id="pengalaman" class="section-padding bg-darkBg px-6">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="font-display font-bold text-3xl md:text-4xl text-white mb-12 flex items-center">
+                <span class="text-neonPurple mr-4">03.</span> Pengalaman & Proyek
+                <div class="h-px bg-gray-700 flex-grow ml-6"></div>
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Card 1 -->
+                <div class="bg-darkCard rounded-2xl border border-gray-800 overflow-hidden hover-neon transition-all duration-300 flex flex-col">
+                    <div class="h-48 bg-gradient-to-br from-purple-900 to-slate-800 flex items-center justify-center relative overflow-hidden">
+                        <!-- Abstract printing shape -->
+                        <div class="absolute w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+PGNpcmNsZSBjeD0iMTAiIGN5PSIxMCIgcj0iMSIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjEpIi8+PC9zdmc+')] opacity-50"></div>
+                        <svg class="w-16 h-16 text-white/50 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="text-xs text-neonPurple font-bold tracking-wider mb-2">PRAKTIK KERJA LAPANGAN (PKL)</div>
+                        <h3 class="text-xl font-display font-bold text-white mb-3">Uprint (Nocai UV Printer)</h3>
+                        <p class="text-gray-400 text-sm flex-grow">Mempelajari dan mengoperasikan mesin Nocai UV Printer. Memahami proses pra-cetak hingga hasil akhir (finishing) pada berbagai media keras.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-darkCard rounded-2xl border border-gray-800 overflow-hidden hover-neon transition-all duration-300 flex flex-col">
+                    <div class="h-48 bg-gradient-to-br from-blue-900 to-slate-800 flex items-center justify-center relative overflow-hidden">
+                         <svg class="w-16 h-16 text-white/50 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z"></path></svg>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="text-xs text-neonPurple font-bold tracking-wider mb-2">PROYEK SINEMATOGRAFI</div>
+                        <h3 class="text-xl font-display font-bold text-white mb-3">Film Pendek 'Terakhir Kali'</h3>
+                        <p class="text-gray-400 text-sm flex-grow">Terlibat dalam produksi film pendek. Menerapkan komposisi 16:9, manajemen pencahayaan, dan proses editing video yang menggugah emosi.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-darkCard rounded-2xl border border-gray-800 overflow-hidden hover-neon transition-all duration-300 flex flex-col">
+                    <div class="h-48 bg-gradient-to-br from-pink-900 to-slate-800 flex items-center justify-center relative overflow-hidden">
+                        <svg class="w-16 h-16 text-white/50 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="text-xs text-neonPurple font-bold tracking-wider mb-2">DESAIN BRANDING</div>
+                        <h3 class="text-xl font-display font-bold text-white mb-3">Brand 'Swirls Mini Wafer Roll'</h3>
+                        <p class="text-gray-400 text-sm flex-grow">Mendesain identitas merek yang kohesif, mulai dari logo hingga layout kemasan yang menarik bagi target audiens muda.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. HOBI -->
+    <section id="hobi" class="section-padding px-6 relative">
+        <div class="max-w-5xl mx-auto">
+             <h2 class="font-display font-bold text-3xl md:text-4xl text-white mb-10 flex items-center justify-end text-right">
+                <div class="h-px bg-gray-700 flex-grow mr-6"></div>
+                Hobi & Minat <span class="text-neonPurple ml-4">.04</span>
+            </h2>
+
+            <div class="flex flex-wrap gap-4 justify-end">
+                <!-- Hobby Tags -->
+                <div class="px-6 py-3 bg-darkCard border border-neonPurple/30 rounded-full text-white font-medium flex items-center gap-2 hover:bg-neonPurple/20 transition cursor-default">
+                    🎥 Sinematografi
+                </div>
+                <div class="px-6 py-3 bg-darkCard border border-neonPurple/30 rounded-full text-white font-medium flex items-center gap-2 hover:bg-neonPurple/20 transition cursor-default">
+                    🎮 Mobile Legends
+                </div>
+                <div class="px-6 py-3 bg-darkCard border border-neonPurple/30 rounded-full text-white font-medium flex items-center gap-2 hover:bg-neonPurple/20 transition cursor-default">
+                    ✨ Genshin Impact
+                </div>
+                <div class="px-6 py-3 bg-darkCard border border-neonPurple/30 rounded-full text-white font-medium flex items-center gap-2 hover:bg-neonPurple/20 transition cursor-default">
+                    ⛏️ Minecraft
+                </div>
+                <div class="px-6 py-3 bg-darkCard border border-neonPurple/30 rounded-full text-white font-medium flex items-center gap-2 hover:bg-neonPurple/20 transition cursor-default">
+                    🦸‍♂️ JoJo's Bizarre Adventure
+                </div>
+                <div class="px-6 py-3 bg-darkCard border border-neonPurple/30 rounded-full text-white font-medium flex items-center gap-2 hover:bg-neonPurple/20 transition cursor-default">
+                    👹 Monster (Anime/Manga)
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. KONTAK -->
+    <section id="kontak" class="section-padding bg-darkBg px-6 mb-20">
+        <div class="max-w-4xl mx-auto bg-darkCard border border-gray-800 rounded-3xl p-8 md:p-14 text-center relative overflow-hidden">
+            <!-- Background Decoration -->
+            <div class="absolute -top-24 -right-24 w-64 h-64 bg-neonPurple/20 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-fuchsia-600/20 rounded-full blur-3xl"></div>
+
+            <div class="relative z-10">
+                <p class="text-neonPurple font-bold tracking-widest text-sm mb-4">05. APA SELANJUTNYA?</p>
+                <h2 class="font-display font-bold text-4xl md:text-5xl text-white mb-6">Mari Berkolaborasi!</h2>
+                <p class="text-gray-400 text-lg mb-8 max-w-xl mx-auto">
+                    Berbasis di <strong class="text-white">Surabaya, Jawa Timur</strong>. Saya saat ini terbuka untuk peluang magang baru, kolaborasi proyek kreatif, atau sekadar bertukar sapa.
+                </p>
+                
+                <a href="mailto:emailanda@example.com" class="inline-block btn-neon border-2 border-neonPurple text-white px-10 py-4 rounded-full font-bold text-lg">
+                    Sapa Saya Sekarang
+                </a>
+
+                <!-- Sosial Media & Profil Game -->
+                <div class="mt-14 flex flex-col items-center gap-6">
+                    <p class="text-gray-400 text-sm tracking-widest uppercase font-medium">Temukan saya di</p>
+                    
+                    <!-- Akun Sosial Media -->
+                    <div class="flex justify-center space-x-6">
+                        <!-- Instagram -->
+                        <a href="https://instagram.com/1dlegann" target="_blank" class="w-14 h-14 flex items-center justify-center rounded-full bg-darkBg border border-gray-700 text-gray-400 hover:text-white hover:border-neonPurple hover:bg-neonPurple/20 hover-neon transition-all duration-300 text-2xl" title="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <!-- TikTok -->
+                        <a href="https://tiktok.com/@ynsgannn" target="_blank" class="w-14 h-14 flex items-center justify-center rounded-full bg-darkBg border border-gray-700 text-gray-400 hover:text-white hover:border-neonPurple hover:bg-neonPurple/20 hover-neon transition-all duration-300 text-2xl" title="TikTok">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                        <!-- WhatsApp -->
+                        <a href="https://wa.me/62895627084800" target="_blank" class="w-14 h-14 flex items-center justify-center rounded-full bg-darkBg border border-gray-700 text-gray-400 hover:text-white hover:border-neonPurple hover:bg-neonPurple/20 hover-neon transition-all duration-300 text-2xl" title="WhatsApp">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                    </div>
+
+                    <!-- Profil Game (In-Game Name) -->
+                    <div class="flex flex-col sm:flex-row gap-4 mt-4 w-full justify-center">
+                        <!-- Minecraft -->
+                        <div class="px-6 py-3 bg-darkBg border border-gray-700 rounded-xl flex items-center gap-4 hover:border-neonPurple hover:bg-neonPurple/10 transition-all duration-300 cursor-default group shadow-lg">
+                            <div class="w-10 h-10 rounded-lg bg-gray-800 flex items-center justify-center group-hover:bg-neonPurple/20 transition-colors">
+                                <i class="fa-solid fa-cube text-neonPurple text-lg group-hover:animate-spin"></i>
+                            </div>
+                            <div class="text-left">
+                                <p class="text-xs text-gray-500 uppercase tracking-wider">Minecraft</p>
+                                <p class="text-base font-bold text-gray-300 group-hover:text-white transition-colors">Reine3e</p>
+                            </div>
+                        </div>
+                        
+                        <!-- MLBB -->
+                        <div class="px-6 py-3 bg-darkBg border border-gray-700 rounded-xl flex items-center gap-4 hover:border-neonPurple hover:bg-neonPurple/10 transition-all duration-300 cursor-default group shadow-lg">
+                            <div class="w-10 h-10 rounded-lg bg-gray-800 flex items-center justify-center group-hover:bg-neonPurple/20 transition-colors">
+                                <i class="fa-solid fa-gamepad text-neonPurple text-lg group-hover:animate-bounce"></i>
+                            </div>
+                            <div class="text-left">
+                                <p class="text-xs text-gray-500 uppercase tracking-wider">MLBB</p>
+                                <p class="text-base font-bold text-gray-300 group-hover:text-white transition-colors">Elijah Galashiels.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-800 bg-darkBg text-center py-8">
+        <p class="text-gray-500 font-sans text-sm">
+            &copy; 2026 M. Afgan Ikhbar Amrullah. Didesain dengan <span class="text-neonPurple">&hearts;</span> di Surabaya.
+        </p>
+    </footer>
+
+    <!-- Simple Script for Mobile Menu Toggle -->
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Menutup menu mobile saat tautan diklik
+        menu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
+</html>
