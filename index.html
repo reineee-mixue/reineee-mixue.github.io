@@ -91,6 +91,38 @@
 </head>
 <body class="antialiased selection:bg-neonPurple selection:text-white">
 
+    <!-- OVERLAY WELCOME SCREEN AUDIO -->
+<div id="welcomeScreen" onclick="enterSite()" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #0b0f19; z-index: 99999; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; transition: opacity 0.6s ease, visibility 0.6s ease;">
+  <h1 style="color: #a78bfa; font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: bold; text-shadow: 0 0 15px rgba(167,139,250,0.5); margin-bottom: 20px;">
+    AFGAN.
+  </h1>
+  <div style="background: rgba(167, 139, 250, 0.1); border: 1px solid #a78bfa; padding: 12px 24px; border-radius: 30px; display: flex; align-items: center; gap: 10px; box-shadow: 0 0 20px rgba(167, 139, 250, 0.2);">
+    <span style="font-size: 1.2rem; animation: pulse 1.5s infinite;">🔊</span>
+    <span style="color: #e2e8f0; font-family: 'Poppins', sans-serif; font-size: 0.85rem; letter-spacing: 1px; font-weight: 600;">
+      KLIK UNTUK MASUK & MEMUTAR SUARA
+    </span>
+  </div>
+</div>
+
+<!-- FILE AUDIO BGM -->
+<audio id="bgmAudio" loop preload="auto">
+  <source src="bgm.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  function enterSite() {
+    const audio = document.getElementById('bgmAudio');
+    const welcome = document.getElementById('welcomeScreen');
+    
+    // Putar audio
+    audio.play().catch(e => console.log(e));
+    
+    // Hilangkan tampilan splash screen dengan animasi fade out
+    welcome.style.opacity = '0';
+    welcome.style.visibility = 'hidden';
+  }
+</script>
+    
     <!-- Navbar: Sticky & Backdrop Blur -->
     <nav class="fixed w-full top-0 z-50 backdrop-blur-md bg-darkBg/80 border-b border-neonPurple/20 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
@@ -336,48 +368,6 @@
                     Sapa Saya Sekarang
                 </a>
                 
-<!-- Custom Neon Audio Player Gen Z -->
-<div style="margin: 25px auto; text-align: center;">
-  <audio id="myBgm" loop preload="auto">
-    <source src="bgm.mp3" type="audio/mpeg">
-  </audio>
-  
-  <button id="musicBtn" onclick="toggleMusic()" style="background: rgba(167, 139, 250, 0.15); border: 1px solid #a78bfa; color: #e2e8f0; padding: 10px 20px; border-radius: 30px; font-size: 0.85rem; font-family: 'Poppins', sans-serif; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; backdrop-filter: blur(5px); box-shadow: 0 0 15px rgba(167, 139, 250, 0.2); transition: all 0.3s ease;">
-    <span id="musicIcon">🎵</span> <span id="musicText">Play Music: Stray Kids</span>
-  </button>
-</div>
-
-<script>
-  const audio = document.getElementById('myBgm');
-  const btn = document.getElementById('musicBtn');
-  const icon = document.getElementById('musicIcon');
-  const text = document.getElementById('musicText');
-
-  // Trik Autoplay: Muter otomatis saat pengunjung pertama kali ngetuk layar
-  document.addEventListener('click', function startAuto() {
-    audio.play().then(() => {
-      icon.innerText = '🔊';
-      text.innerText = 'Now Playing: Stray Kids';
-      btn.style.borderColor = '#38bdf8';
-      document.removeEventListener('click', startAuto);
-    }).catch(() => {});
-  }, { once: true });
-
-  function toggleMusic() {
-    if (audio.paused) {
-      audio.play();
-      icon.innerText = '🔊';
-      text.innerText = 'Now Playing: Stray Kids';
-      btn.style.borderColor = '#38bdf8';
-    } else {
-      audio.pause();
-      icon.innerText = '🎵';
-      text.innerText = 'Play Music: Stray Kids';
-      btn.style.borderColor = '#a78bfa';
-    }
-  }
-</script>
-
                 <!-- Sosial Media & Profil Game -->
                 <div class="mt-14 flex flex-col items-center gap-6">
                     <p class="text-gray-400 text-sm tracking-widest uppercase font-medium">Temukan saya di</p>
