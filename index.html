@@ -606,6 +606,91 @@
             }
         }
     </script>
+
+    <!-- ========================================== -->
+    <!-- FITUR CUSTOM CURSOR (PRO DKV STYLE)        -->
+    <!-- ========================================== -->
+    <style>
+      /* Kursor custom ini cuma nyala di PC/Laptop (Mouse). Di HP tetep aman! */
+      @media (pointer: fine) {
+        body, a, button, input, [onclick], .hover-cute, .group { cursor: none !important; }
+        
+        .cursor-dot {
+          width: 8px; height: 8px;
+          background-color: #38bdf8;
+          position: fixed; border-radius: 50%;
+          pointer-events: none; z-index: 999999;
+          transform: translate(-50%, -50%);
+          transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+        
+        .cursor-ring {
+          width: 36px; height: 36px;
+          border: 2px solid #38bdf8;
+          position: fixed; border-radius: 50%;
+          pointer-events: none; z-index: 999998;
+          transform: translate(-50%, -50%);
+          transition: width 0.2s, height 0.2s, background-color 0.2s, border-color 0.2s;
+        }
+
+        /* Efek Hover pas kursor nyentuh tombol / link (Membesar & jadi Pink) */
+        body.hovering-link .cursor-dot {
+          background-color: #f472b6; 
+          width: 12px; height: 12px;
+        }
+        body.hovering-link .cursor-ring {
+          width: 50px; height: 50px;
+          background-color: rgba(244, 114, 182, 0.15);
+          border-color: #f472b6;
+        }
+        
+        /* Auto-nyesuaiin warna kalau Dark Mode nyala */
+        body.dark-mode .cursor-dot { background-color: #818cf8; }
+        body.dark-mode .cursor-ring { border-color: #818cf8; }
+        body.dark-mode.hovering-link .cursor-dot { background-color: #38bdf8; }
+        body.dark-mode.hovering-link .cursor-ring { border-color: #38bdf8; background-color: rgba(56, 189, 248, 0.15); }
+      }
+    </style>
+
+    <!-- Elemen Kursor -->
+    <div class="cursor-dot hidden md:block" id="customCursorDot"></div>
+    <div class="cursor-ring hidden md:block" id="customCursorRing"></div>
+
+    <!-- Script Penggerak Kursor -->
+    <script>
+      if (window.matchMedia("(pointer: fine)").matches) {
+        const dot = document.getElementById('customCursorDot');
+        const ring = document.getElementById('customCursorRing');
+        let mouseX = 0, mouseY = 0;
+        let ringX = 0, ringY = 0;
+
+        // Bikin cincinnya ngikutin pake efek "Smooth Trailing"
+        function animateCursor() {
+          ringX += (mouseX - ringX) * 0.25;
+          ringY += (mouseY - ringY) * 0.25;
+          dot.style.left = mouseX + 'px';
+          dot.style.top = mouseY + 'px';
+          ring.style.left = ringX + 'px';
+          ring.style.top = ringY + 'px';
+          requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        window.addEventListener('mousemove', (e) => {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+        });
+
+        // Deteksi kalau kursor nyentuh area yang bisa diklik
+        document.addEventListener('mouseover', (e) => {
+          if (e.target.closest('a, button, input, [onclick], .hover-cute, .group')) {
+            document.body.classList.add('hovering-link');
+          } else {
+            document.body.classList.remove('hovering-link');
+          }
+        });
+      }
+    </script>
     
 </body>
 </html>
